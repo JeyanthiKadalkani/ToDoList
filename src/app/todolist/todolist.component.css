@@ -1,0 +1,36 @@
+.listHeight{
+    height : 40px;
+}
+
+.hover-cursor{
+    cursor: pointer;
+}
+
+.fullListScroll{
+    
+    height: 450px;
+    overflow: auto;
+}
+
+.alignDeleted{
+    padding : 10px 20px;
+}
+
+.alignRight { 
+    padding-left : 20px;
+    padding-top : 20px;
+    padding-bottom : 20px;
+}
+
+.highlight{
+    background-color : lightgray;
+}
+
+.faAlign{
+    padding-top : 20px;
+    
+}
+
+.modal-header {
+    background-color: skyblue;
+}

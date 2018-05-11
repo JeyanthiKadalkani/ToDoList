@@ -1,0 +1,82 @@
+<nav class="navbar navbar-inverse navbar-fixed-top modal-header">
+      <div class="container">
+        <h1 >To Do List App</h1>
+        <form class="navbar-form navbar-left">
+            <input type="text" class="form-control" placeholder="Search task..." 
+            [ngModelOptions]="{standalone: true}" [(ngModel)]="searchText">
+        </form>
+       </div>
+</nav>
+<br>
+<div class="container">
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-6" >
+       <div class="input-group highlight">
+        <span class="hover-cursor alignRight">
+          <input type="checkbox" class="selectAll" (click)="selectAllTasks()">
+        </span>
+     
+        <span class="input-group-addon alignRight hover-cursor" data-toggle="modal" data-target="#itemModal">
+          <i class="fa fa-plus fa-lg" ></i>
+        </span>
+        <span class="input-group-addon alignRight hover-cursor " (click)="completeItem()" data-toggle="tooltip" data-placement="bottom" title="Completed">
+          <i class="fa fa-thumbs-up fa-lg" ></i>
+        </span>
+        <div class="hover-cursor text-danger alignRight" (click)="deleteItem()" data-toggle="tooltip" data-placement="bottom" title="Delete Item" >
+            <i class="fa fa-trash fa-lg"></i>
+        </div>
+    </div>
+<div class="fullListScroll">
+    <ul class="list-group fullList">
+   <li class="list-group-item" *ngFor="let task of taskList | filter : searchText">
+     <span class="hover-cursor" contenteditable>
+       <input type="checkbox">
+       <span class="taskName" >
+       {{task}}</span>
+     </span>
+     </li>
+ </ul>
+ </div>
+ </div>
+    <div class="col-12 col-sm-12 col-md-6">
+      <div *ngIf="deletedItem.length>0" class="input-group highlight">
+        <h3 class="alignDeleted">Deleted Items</h3>
+        </div>
+        <div class="fullListScroll">
+        <ul class="list-group fullList">
+          <li class="list-group-item" *ngFor="let task of deletedItem | filter : searchText">
+          <span class="hover-cursor">
+            
+            <span class="taskName" >
+            {{task}}</span>
+          </span>
+          </li>
+        </ul>
+    </div>
+    </div>
+</div>
+<div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="itemModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="itemModalLabel">Add New Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" placeholder="Enter New Item" #newItem>
+        <div *ngIf="isEnable" class="alert alert-success" role="alert">
+         Item added Successfully!
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-primary" (click)="addItem(newItem)">ADD</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+  
